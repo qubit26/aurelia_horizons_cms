@@ -13,6 +13,12 @@
   "attributes": {
     "Nombre": {
       "type": "string"
+    },
+    "pais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pais.pais",
+      "mappedBy": "region"
     }
   }
 }

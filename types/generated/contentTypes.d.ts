@@ -373,6 +373,107 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
+  collectionName: 'alojamientos';
+  info: {
+    displayName: 'Alojamiento';
+    pluralName: 'alojamientos';
+    singularName: 'alojamiento';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    destino: Schema.Attribute.Relation<'manyToOne', 'api::destino.destino'>;
+    Guests: Schema.Attribute.Integer;
+    Images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    IsVilla: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::alojamiento.alojamiento'
+    > &
+      Schema.Attribute.Private;
+    Price: Schema.Attribute.Decimal;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDestinoDestino extends Struct.CollectionTypeSchema {
+  collectionName: 'destinos';
+  info: {
+    displayName: 'Destino';
+    pluralName: 'destinos';
+    singularName: 'destino';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    alojamientos: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::alojamiento.alojamiento'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Featured: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::destino.destino'
+    > &
+      Schema.Attribute.Private;
+    Nombre: Schema.Attribute.String;
+    pai: Schema.Attribute.Relation<'manyToOne', 'api::pais.pais'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPaisPais extends Struct.CollectionTypeSchema {
+  collectionName: 'paises';
+  info: {
+    displayName: 'Pa\u00EDs';
+    pluralName: 'paises';
+    singularName: 'pais';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    destinos: Schema.Attribute.Relation<'oneToMany', 'api::destino.destino'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::pais.pais'> &
+      Schema.Attribute.Private;
+    Nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    region: Schema.Attribute.Relation<'manyToOne', 'api::region.region'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
   collectionName: 'regions';
   info: {
@@ -394,6 +495,7 @@ export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Nombre: Schema.Attribute.String;
+    pais: Schema.Attribute.Relation<'oneToMany', 'api::pais.pais'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -910,6 +1012,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::alojamiento.alojamiento': ApiAlojamientoAlojamiento;
+      'api::destino.destino': ApiDestinoDestino;
+      'api::pais.pais': ApiPaisPais;
       'api::region.region': ApiRegionRegion;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

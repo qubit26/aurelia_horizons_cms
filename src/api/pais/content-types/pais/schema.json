@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "paises",
+  "info": {
+    "singularName": "pais",
+    "pluralName": "paises",
+    "displayName": "País"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string"
+    },
+    "region": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::region.region",
+      "inversedBy": "pais"
+    },
+    "destinos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::destino.destino",
+      "mappedBy": "pai"
+    }
+  }
+}

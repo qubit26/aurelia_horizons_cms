@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "destinos",
+  "info": {
+    "singularName": "destino",
+    "pluralName": "destinos",
+    "displayName": "Destino"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string"
+    },
+    "Featured": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "pai": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pais.pais",
+      "inversedBy": "destinos"
+    },
+    "alojamientos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::alojamiento.alojamiento",
+      "mappedBy": "destino"
+    }
+  }
+}
