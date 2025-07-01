@@ -428,6 +428,7 @@ export interface ApiDestinoDestino extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     Featured: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -457,15 +458,24 @@ export interface ApiPaisPais extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     destinos: Schema.Attribute.Relation<'oneToMany', 'api::destino.destino'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::pais.pais'> &
-      Schema.Attribute.Private;
-    Nombre: Schema.Attribute.String;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::pais.pais'>;
+    Nombre: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     region: Schema.Attribute.Relation<'manyToOne', 'api::region.region'>;
     updatedAt: Schema.Attribute.DateTime;
