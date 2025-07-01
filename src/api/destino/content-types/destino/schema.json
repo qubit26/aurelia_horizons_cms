@@ -14,16 +14,6 @@
     "Nombre": {
       "type": "string"
     },
-    "Featured": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "pai": {
       "type": "relation",
       "relation": "manyToOne",
@@ -38,6 +28,9 @@
     },
     "description": {
       "type": "text"
+    },
+    "featured_img": {
+      "type": "string"
     }
   }
 }
