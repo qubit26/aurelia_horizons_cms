@@ -390,10 +390,10 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
     Description: Schema.Attribute.Text;
     destino: Schema.Attribute.Relation<'manyToOne', 'api::destino.destino'>;
     Guests: Schema.Attribute.Integer;
-    Images: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    img_1: Schema.Attribute.String;
+    img_2: Schema.Attribute.String;
+    img_3: Schema.Attribute.String;
+    img_4: Schema.Attribute.String;
     IsVilla: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

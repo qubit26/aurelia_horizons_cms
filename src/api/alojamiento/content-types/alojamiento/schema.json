@@ -17,16 +17,6 @@
     "Description": {
       "type": "text"
     },
-    "Images": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "Price": {
       "type": "decimal"
     },
@@ -42,6 +32,18 @@
       "relation": "manyToOne",
       "target": "api::destino.destino",
       "inversedBy": "alojamientos"
+    },
+    "img_1": {
+      "type": "string"
+    },
+    "img_2": {
+      "type": "string"
+    },
+    "img_3": {
+      "type": "string"
+    },
+    "img_4": {
+      "type": "string"
     }
   }
 }
