@@ -384,6 +384,12 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    amenities: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::amenidad.amenidad'
+    >;
+    bathrooms: Schema.Attribute.Decimal;
+    bedrooms: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -394,6 +400,7 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
     img_2: Schema.Attribute.String;
     img_3: Schema.Attribute.String;
     img_4: Schema.Attribute.String;
+    img_5: Schema.Attribute.String;
     IsVilla: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -401,9 +408,43 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
       'api::alojamiento.alojamiento'
     > &
       Schema.Attribute.Private;
+    meters: Schema.Attribute.Decimal;
     Price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
+    reference: Schema.Attribute.String;
     Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAmenidadAmenidad extends Struct.CollectionTypeSchema {
+  collectionName: 'amenidades';
+  info: {
+    displayName: 'Amenidad';
+    pluralName: 'amenidades';
+    singularName: 'amenidad';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    alojamientos: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::alojamiento.alojamiento'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::amenidad.amenidad'
+    > &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1020,6 +1061,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::alojamiento.alojamiento': ApiAlojamientoAlojamiento;
+      'api::amenidad.amenidad': ApiAmenidadAmenidad;
       'api::destino.destino': ApiDestinoDestino;
       'api::pais.pais': ApiPaisPais;
       'api::region.region': ApiRegionRegion;

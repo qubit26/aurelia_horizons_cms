@@ -23,6 +23,21 @@
     "Guests": {
       "type": "integer"
     },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "bathrooms": {
+      "type": "decimal"
+    },
+    "meters": {
+      "type": "decimal"
+    },
+    "amenities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::amenidad.amenidad",
+      "inversedBy": "alojamientos"
+    },
     "IsVilla": {
       "type": "boolean",
       "default": false
@@ -43,6 +58,12 @@
       "type": "string"
     },
     "img_4": {
+      "type": "string"
+    },
+    "img_5": {
+      "type": "string"
+    },
+    "reference": {
       "type": "string"
     }
   }
