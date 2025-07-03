@@ -65,6 +65,9 @@
     },
     "reference": {
       "type": "string"
+    },
+    "destacado": {
+      "type": "boolean"
     }
   }
 }

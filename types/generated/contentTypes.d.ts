@@ -394,6 +394,7 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description: Schema.Attribute.Text;
+    destacado: Schema.Attribute.Boolean;
     destino: Schema.Attribute.Relation<'manyToOne', 'api::destino.destino'>;
     Guests: Schema.Attribute.Integer;
     img_1: Schema.Attribute.String;
