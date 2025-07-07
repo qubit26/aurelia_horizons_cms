@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "consultas",
+  "info": {
+    "singularName": "consulta",
+    "pluralName": "consultas",
+    "displayName": "Consulta"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fecha_entrada": {
+      "type": "date"
+    },
+    "fecha_salida": {
+      "type": "date"
+    },
+    "huespedes": {
+      "type": "integer"
+    },
+    "alojamiento": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::alojamiento.alojamiento",
+      "inversedBy": "consultas"
+    },
+    "numero": {
+      "type": "string"
+    }
+  }
+}

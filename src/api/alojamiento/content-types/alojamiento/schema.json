@@ -68,6 +68,12 @@
     },
     "destacado": {
       "type": "boolean"
+    },
+    "consultas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::consulta.consulta",
+      "mappedBy": "alojamiento"
     }
   }
 }

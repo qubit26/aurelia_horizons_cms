@@ -390,6 +390,7 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
     >;
     bathrooms: Schema.Attribute.Decimal;
     bedrooms: Schema.Attribute.Integer;
+    consultas: Schema.Attribute.Relation<'oneToMany', 'api::consulta.consulta'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -445,6 +446,41 @@ export interface ApiAmenidadAmenidad extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiConsultaConsulta extends Struct.CollectionTypeSchema {
+  collectionName: 'consultas';
+  info: {
+    displayName: 'Consulta';
+    pluralName: 'consultas';
+    singularName: 'consulta';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    alojamiento: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::alojamiento.alojamiento'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fecha_entrada: Schema.Attribute.Date;
+    fecha_salida: Schema.Attribute.Date;
+    huespedes: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::consulta.consulta'
+    > &
+      Schema.Attribute.Private;
+    numero: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1063,6 +1099,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::alojamiento.alojamiento': ApiAlojamientoAlojamiento;
       'api::amenidad.amenidad': ApiAmenidadAmenidad;
+      'api::consulta.consulta': ApiConsultaConsulta;
       'api::destino.destino': ApiDestinoDestino;
       'api::pais.pais': ApiPaisPais;
       'api::region.region': ApiRegionRegion;
