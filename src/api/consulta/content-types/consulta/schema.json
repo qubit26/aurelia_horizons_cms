@@ -26,6 +26,9 @@
       "target": "api::alojamiento.alojamiento",
       "inversedBy": "consultas"
     },
+    "mensaje": {
+      "type": "text"
+    },
     "numero": {
       "type": "string"
     }

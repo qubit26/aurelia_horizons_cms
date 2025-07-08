@@ -480,6 +480,7 @@ export interface ApiConsultaConsulta extends Struct.CollectionTypeSchema {
       'api::consulta.consulta'
     > &
       Schema.Attribute.Private;
+    mensaje: Schema.Attribute.Text;
     numero: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
