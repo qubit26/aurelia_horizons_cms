@@ -63,6 +63,15 @@
     "img_5": {
       "type": "string"
     },
+    "img_6": {
+      "type": "string"
+    },
+    "img_7": {
+      "type": "string"
+    },
+    "img_8": {
+      "type": "string"
+    },
     "reference": {
       "type": "string"
     },

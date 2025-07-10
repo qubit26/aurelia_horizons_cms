@@ -403,6 +403,9 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
     img_3: Schema.Attribute.String;
     img_4: Schema.Attribute.String;
     img_5: Schema.Attribute.String;
+    img_6: Schema.Attribute.String;
+    img_7: Schema.Attribute.String;
+    img_8: Schema.Attribute.String;
     IsVilla: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
