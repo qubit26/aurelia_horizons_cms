@@ -72,6 +72,18 @@
     "img_8": {
       "type": "string"
     },
+    "img_9": {
+      "type": "string"
+    },
+    "img_10": {
+      "type": "string"
+    },
+    "img_11": {
+      "type": "string"
+    },
+    "img_12": {
+      "type": "string"
+    },
     "reference": {
       "type": "string"
     },

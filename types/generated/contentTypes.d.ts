@@ -399,6 +399,9 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
     destino: Schema.Attribute.Relation<'manyToOne', 'api::destino.destino'>;
     Guests: Schema.Attribute.Integer;
     img_1: Schema.Attribute.String;
+    img_10: Schema.Attribute.String;
+    img_11: Schema.Attribute.String;
+    img_12: Schema.Attribute.String;
     img_2: Schema.Attribute.String;
     img_3: Schema.Attribute.String;
     img_4: Schema.Attribute.String;
@@ -406,6 +409,7 @@ export interface ApiAlojamientoAlojamiento extends Struct.CollectionTypeSchema {
     img_6: Schema.Attribute.String;
     img_7: Schema.Attribute.String;
     img_8: Schema.Attribute.String;
+    img_9: Schema.Attribute.String;
     IsVilla: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
