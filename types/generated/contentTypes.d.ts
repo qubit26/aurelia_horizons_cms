@@ -531,6 +531,36 @@ export interface ApiDestinoDestino extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMensajeMensaje extends Struct.CollectionTypeSchema {
+  collectionName: 'mensajes';
+  info: {
+    displayName: 'Mensaje';
+    pluralName: 'mensajes';
+    singularName: 'mensaje';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mensaje.mensaje'
+    > &
+      Schema.Attribute.Private;
+    mensaje: Schema.Attribute.Text;
+    nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPaisPais extends Struct.CollectionTypeSchema {
   collectionName: 'paises';
   info: {
@@ -1109,6 +1139,7 @@ declare module '@strapi/strapi' {
       'api::amenidad.amenidad': ApiAmenidadAmenidad;
       'api::consulta.consulta': ApiConsultaConsulta;
       'api::destino.destino': ApiDestinoDestino;
+      'api::mensaje.mensaje': ApiMensajeMensaje;
       'api::pais.pais': ApiPaisPais;
       'api::region.region': ApiRegionRegion;
       'plugin::content-releases.release': PluginContentReleasesRelease;
